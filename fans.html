@@ -1,169 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arsenal Fan Registration</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arsenal Fan Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#EF0107;
+    --red-dark:#A2000B;
+    --navy:#063672;
+    --gold:#9C824A;
+    --ink:#161616;
+    --paper:#f5f5f5;
+    --white:#ffffff;
+    --line:#ddd;
+    --error:#c0392b;
+    --ok:#1a7a3c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',Arial,sans-serif;background:var(--paper);color:#222;}
+  h1,h2{font-family:'Anton',Arial,sans-serif;font-weight:400;}
 
-    <style>
+  header{
+    background:linear-gradient(to right,var(--red-dark),var(--red));
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+  }
+  header h1{font-size:clamp(28px,5vw,38px);margin-bottom:8px;}
 
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  nav{background:var(--ink);padding:14px;text-align:center;}
+  nav a{color:white;text-decoration:none;font-size:15px;font-weight:500;}
+  nav a:hover{color:var(--red);}
 
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-        }
+  .progress-wrap{max-width:700px;margin:26px auto 0;padding:0 20px;}
+  .progress-bar{height:6px;background:#e2e2e2;border-radius:4px;overflow:hidden;}
+  .progress-fill{height:100%;width:0%;background:var(--red);transition:width .3s ease;}
+  .progress-label{font-size:12px;color:#666;margin-top:6px;font-family:'Space Mono',monospace;}
 
-        header{
-            background: linear-gradient(to right, #c40000, #ff1e1e);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
+  .form-container{
+    width:92%;max-width:700px;margin:24px auto 50px;
+    background:var(--white);padding:30px;border-radius:14px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  }
+  .form-container h2{text-align:center;color:var(--red-dark);margin-bottom:6px;}
+  .form-sub{text-align:center;color:#777;font-size:14px;margin-bottom:26px;}
 
-        header h1{
-            margin-bottom: 10px;
-            font-size: 36px;
-        }
+  .field{position:relative;margin-bottom:20px;}
+  label{font-weight:600;display:block;margin-bottom:6px;font-size:14px;}
+  input,select,textarea{
+    width:100%;padding:12px;border:1.5px solid var(--line);border-radius:8px;
+    font-size:15px;font-family:inherit;transition:border-color .2s, box-shadow .2s;
+  }
+  input:focus,select:focus,textarea:focus{
+    outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(239,1,7,0.12);
+  }
+  input.invalid,select.invalid,textarea.invalid{border-color:var(--error);}
+  input.valid,select.valid,textarea.valid{border-color:var(--ok);}
+  textarea{resize:vertical;min-height:110px;}
+  .hint{font-size:12px;color:#888;margin-top:5px;min-height:14px;}
+  .hint.error{color:var(--error);}
+  .hint.ok{color:var(--ok);}
+  .char-count{position:absolute;right:0;bottom:-18px;font-size:11px;color:#999;}
 
-        nav{
-            background-color: #111;
-            padding: 15px;
-            text-align: center;
-        }
+  .autocomplete-list{
+    position:absolute;top:100%;left:0;right:0;background:white;
+    border:1px solid var(--line);border-radius:8px;margin-top:4px;
+    max-height:160px;overflow-y:auto;box-shadow:0 6px 16px rgba(0,0,0,0.12);
+    z-index:10;display:none;
+  }
+  .autocomplete-list.show{display:block;}
+  .autocomplete-list div{padding:9px 12px;cursor:pointer;font-size:14px;}
+  .autocomplete-list div:hover,.autocomplete-list div.active{background:#fdeaea;}
 
-        nav a{
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            transition: 0.3s;
-        }
+  button[type="submit"]{
+    width:100%;padding:14px;background:var(--red);color:white;border:none;
+    border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;
+    transition:background .2s,transform .1s;
+  }
+  button[type="submit"]:hover{background:var(--red-dark);}
+  button[type="submit"]:active{transform:scale(0.99);}
+  button[type="submit"]:disabled{background:#ccc;cursor:not-allowed;}
 
-        nav a:hover{
-            color: red;
-        }
+  .toast{
+    position:fixed;bottom:-100px;left:50%;transform:translateX(-50%);
+    background:var(--ink);color:white;padding:14px 22px;border-radius:10px;
+    font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,0.25);
+    transition:bottom .4s ease;z-index:100;display:flex;align-items:center;gap:10px;
+  }
+  .toast.show{bottom:24px;}
+  .toast .dot{width:8px;height:8px;background:var(--ok);border-radius:50%;flex:none;}
 
-        .form-container{
-            width: 90%;
-            max-width: 700px;
-            margin: 40px auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+  .overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,0.55);display:none;
+    align-items:center;justify-content:center;z-index:200;padding:20px;
+  }
+  .overlay.show{display:flex;}
+  .modal{
+    background:white;border-radius:14px;padding:36px 28px;max-width:420px;text-align:center;
+    animation:pop .3s ease;
+  }
+  @keyframes pop{from{transform:scale(0.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+  .modal .crest{
+    width:64px;height:64px;border-radius:50%;background:var(--red);color:white;
+    display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;
+    font-size:26px;margin:0 auto 16px;
+  }
+  .modal h3{font-family:'Anton',sans-serif;color:var(--red-dark);font-size:22px;margin-bottom:10px;}
+  .modal p{color:#555;font-size:14px;line-height:1.6;margin-bottom:20px;}
+  .modal button{
+    background:var(--ink);color:white;border:none;padding:10px 22px;border-radius:8px;
+    cursor:pointer;font-size:14px;
+  }
 
-        .form-container h2{
-            text-align: center;
-            margin-bottom: 25px;
-            color: #c40000;
-        }
-
-        label{
-            font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input,
-        select,
-        textarea{
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        textarea{
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        button{
-            width: 100%;
-            padding: 14px;
-            background-color: #c40000;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        button:hover{
-            background-color: #900000;
-        }
-
-        @media(max-width: 768px){
-
-            header h1{
-                font-size: 28px;
-            }
-
-            .form-container{
-                padding: 20px;
-            }
-
-        }
-
-    </style>
+  @media(max-width:768px){
+    header h1{font-size:26px;}
+    .form-container{padding:20px;}
+  }
+</style>
 </head>
-
 <body>
 
-    <header>
-        <h1>Arsenal Fan Registration</h1>
-        <p>Join the Arsenal fan community today</p>
-    </header>
+<header>
+  <h1>Arsenal Fan Registration</h1>
+  <p>Join the Arsenal fan community today</p>
+</header>
 
-    <nav>
-        <a href="homepage.html">← Back to Homepage</a>
-    </nav>
+<nav><a href="homepage.html">&larr; Back to Homepage</a></nav>
 
-    <div class="form-container">
+<div class="progress-wrap">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">0% complete</div>
+</div>
 
-        <h2>Register Now</h2>
+<div class="form-container">
+  <h2>Register Now</h2>
+  <p class="form-sub">Fields update live as you type &mdash; fill them in to unlock submission.</p>
 
-        <form>
-
-            <label>Full Name</label>
-            <input type="text" name="name" placeholder="Enter your full name">
-
-            <label>Email Address</label>
-            <input type="email" name="email" placeholder="Enter your email">
-
-            <label>Age</label>
-            <input type="number" name="age" placeholder="Enter your age">
-
-            <label>Favorite Arsenal Player</label>
-            <input type="text" name="player" placeholder="Your favorite player">
-
-            <label>Favorite Position</label>
-            <select>
-                <option>Goalkeeper</option>
-                <option>Defender</option>
-                <option>Midfielder</option>
-                <option>Forward</option>
-            </select>
-
-            <label>Why do you support Arsenal?</label>
-            <textarea placeholder="Tell us why you support Arsenal"></textarea>
-
-            <button type="submit">
-                Submit Registration
-            </button>
-
-        </form>
-
+  <form id="fanForm" novalidate>
+    <div class="field">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" autocomplete="off">
+      <div class="hint" id="hint-name"></div>
     </div>
 
+    <div class="field">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="off">
+      <div class="hint" id="hint-email"></div>
+    </div>
+
+    <div class="field">
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="120">
+      <div class="hint" id="hint-age"></div>
+    </div>
+
+    <div class="field">
+      <label for="player">Favorite Arsenal Player</label>
+      <input type="text" id="player" name="player" placeholder="Start typing a player name" autocomplete="off">
+      <div class="autocomplete-list" id="playerList"></div>
+      <div class="hint" id="hint-player"></div>
+    </div>
+
+    <div class="field">
+      <label for="position">Favorite Position</label>
+      <select id="position" name="position">
+        <option value="">Choose a position</option>
+        <option>Goalkeeper</option>
+        <option>Defender</option>
+        <option>Midfielder</option>
+        <option>Forward</option>
+      </select>
+      <div class="hint" id="hint-position"></div>
+    </div>
+
+    <div class="field">
+      <label for="reason">Why do you support Arsenal?</label>
+      <textarea id="reason" name="reason" placeholder="Tell us why you support Arsenal" maxlength="300"></textarea>
+      <span class="char-count" id="charCount">0 / 300</span>
+      <div class="hint" id="hint-reason"></div>
+    </div>
+
+    <button type="submit" id="submitBtn" disabled>Submit Registration</button>
+  </form>
+</div>
+
+<div class="toast" id="toast"><span class="dot"></span><span id="toastText"></span></div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="crest">A</div>
+    <h3>Welcome to the Squad!</h3>
+    <p id="modalMsg">Thanks for registering. You're officially part of the Arsenal fan community.</p>
+    <button id="modalClose">Continue</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const form = document.getElementById('fanForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const progressFill = document.getElementById('progressFill');
+  const progressLabel = document.getElementById('progressLabel');
+
+  const fields = ['name','email','age','player','position','reason'];
+  const state = {};
+  fields.forEach(f => state[f] = false);
+
+  const players = [
+    'Bukayo Saka','Martin Odegaard','Declan Rice','William Saliba','Gabriel Magalhaes',
+    'David Raya','Kai Havertz','Gabriel Jesus','Gabriel Martinelli','Thomas Partey',
+    'Ben White','Leandro Trossard','Jurrien Timber','Ian Wright','Thierry Henry',
+    'Dennis Bergkamp','Tony Adams','Patrick Vieira','Cesc Fabregas'
+  ];
+
+  function setHint(id, msg, type){
+    const el = document.getElementById('hint-' + id);
+    el.textContent = msg || '';
+    el.className = 'hint' + (type ? ' ' + type : '');
+  }
+  function markField(el, ok){
+    el.classList.remove('valid','invalid');
+    if(ok === true) el.classList.add('valid');
+    if(ok === false) el.classList.add('invalid');
+  }
+  function updateProgress(){
+    const done = Object.values(state).filter(Boolean).length;
+    const pct = Math.round((done / fields.length) * 100);
+    progressFill.style.width = pct + '%';
+    progressLabel.textContent = pct + '% complete';
+    submitBtn.disabled = done < fields.length;
+  }
+
+  // Name
+  const nameEl = document.getElementById('name');
+  nameEl.addEventListener('input', () => {
+    const v = nameEl.value.trim();
+    const ok = v.length >= 2 && /^[a-zA-Z\s'-]+$/.test(v);
+    state.name = ok;
+    markField(nameEl, v ? ok : null);
+    setHint('name', v ? (ok ? 'Looks good' : 'Enter a valid name (letters only)') : '', ok ? 'ok' : 'error');
+    updateProgress();
+  });
+
+  // Email
+  const emailEl = document.getElementById('email');
+  emailEl.addEventListener('input', () => {
+    const v = emailEl.value.trim();
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    state.email = ok;
+    markField(emailEl, v ? ok : null);
+    setHint('email', v ? (ok ? 'Looks good' : 'Enter a valid email address') : '', ok ? 'ok' : 'error');
+    updateProgress();
+  });
+
+  // Age
+  const ageEl = document.getElementById('age');
+  ageEl.addEventListener('input', () => {
+    const v = ageEl.value;
+    const num = parseInt(v, 10);
+    const ok = v !== '' && num >= 5 && num <= 110;
+    state.age = ok;
+    markField(ageEl, v ? ok : null);
+    setHint('age', v ? (ok ? 'Looks good' : 'Enter an age between 5 and 110') : '', ok ? 'ok' : 'error');
+    updateProgress();
+  });
+
+  // Player autocomplete
+  const playerEl = document.getElementById('player');
+  const playerList = document.getElementById('playerList');
+  let activeIndex = -1;
+
+  function renderPlayerList(matches){
+    playerList.innerHTML = matches.map((m,i) => `<div data-idx="${i}">${m}</div>`).join('');
+    playerList.classList.toggle('show', matches.length > 0);
+    activeIndex = -1;
+  }
+  playerEl.addEventListener('input', () => {
+    const v = playerEl.value.trim();
+    state.player = v.length >= 2;
+    markField(playerEl, v ? state.player : null);
+    setHint('player', v ? (state.player ? 'Looks good' : 'Keep typing a player name') : '', state.player ? 'ok' : 'error');
+    updateProgress();
+    if(v.length === 0){ renderPlayerList([]); return; }
+    const matches = players.filter(p => p.toLowerCase().includes(v.toLowerCase())).slice(0,6);
+    renderPlayerList(matches);
+  });
+  playerEl.addEventListener('keydown', (e) => {
+    const items = playerList.querySelectorAll('div');
+    if(!items.length) return;
+    if(e.key === 'ArrowDown'){ e.preventDefault(); activeIndex = (activeIndex+1) % items.length; }
+    else if(e.key === 'ArrowUp'){ e.preventDefault(); activeIndex = (activeIndex-1+items.length) % items.length; }
+    else if(e.key === 'Enter' && activeIndex >= 0){ e.preventDefault(); items[activeIndex].click(); return; }
+    else return;
+    items.forEach(it => it.classList.remove('active'));
+    items[activeIndex].classList.add('active');
+  });
+  playerList.addEventListener('click', (e) => {
+    if(e.target.tagName === 'DIV'){
+      playerEl.value = e.target.textContent;
+      playerEl.dispatchEvent(new Event('input'));
+      renderPlayerList([]);
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if(!playerEl.contains(e.target) && !playerList.contains(e.target)) renderPlayerList([]);
+  });
+
+  // Position
+  const positionEl = document.getElementById('position');
+  positionEl.addEventListener('change', () => {
+    const ok = positionEl.value !== '';
+    state.position = ok;
+    markField(positionEl, ok);
+    setHint('position', ok ? 'Looks good' : 'Please choose a position', ok ? 'ok' : 'error');
+    updateProgress();
+  });
+
+  // Reason + char count
+  const reasonEl = document.getElementById('reason');
+  const charCount = document.getElementById('charCount');
+  reasonEl.addEventListener('input', () => {
+    const v = reasonEl.value;
+    charCount.textContent = v.length + ' / 300';
+    const ok = v.trim().length >= 10;
+    state.reason = ok;
+    markField(reasonEl, v ? ok : null);
+    setHint('reason', v ? (ok ? 'Looks good' : 'Tell us a bit more (10+ characters)') : '', ok ? 'ok' : 'error');
+    updateProgress();
+  });
+
+  // Toast helper
+  const toast = document.getElementById('toast');
+  const toastText = document.getElementById('toastText');
+  function showToast(msg){
+    toastText.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+
+  // Submit
+  const overlay = document.getElementById('overlay');
+  const modalMsg = document.getElementById('modalMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const allOk = fields.every(f => state[f]);
+    if(!allOk){
+      showToast('Please complete all fields correctly.');
+      return;
+    }
+    const name = nameEl.value.trim().split(' ')[0];
+    const player = playerEl.value.trim();
+    modalMsg.textContent = `Thanks, ${name}! You're officially part of the Arsenal fan community. Fellow ${player} fans will be glad to have you.`;
+    overlay.classList.add('show');
+    form.reset();
+    fields.forEach(f => state[f] = false);
+    document.querySelectorAll('input,select,textarea').forEach(el => el.classList.remove('valid','invalid'));
+    document.querySelectorAll('.hint').forEach(el => { el.textContent=''; el.className='hint'; });
+    charCount.textContent = '0 / 300';
+    updateProgress();
+  });
+
+  document.getElementById('modalClose').addEventListener('click', () => {
+    overlay.classList.remove('show');
+  });
+  overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.classList.remove('show'); });
+
+  updateProgress();
+})();
+</script>
 </body>
 </html>
