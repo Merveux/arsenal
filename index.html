@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Arsenal FC Website</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<img src="images/arsenal-logo.png">
+
+<h1>Arsenal Football Club</h1>
+
+
+<nav>
+
+<a href="#home">Home</a>
+<a href="#team">Team</a>
+<a href="#matches">Matches</a>
+<a href="#tickets">Tickets</a>
+<a href="#shop">Shop</a>
+<a href="#news">News</a>
+
+</nav>
+
+
+</header>
+
+
+
+<section id="home" class="hero">
+
+<h2>Welcome to Arsenal FC</h2>
+
+<p>
+The official fan website
+</p>
+
+</section>
+
+
+
+
+
+<!-- TEAM / PLAYER ENTITY -->
+
+<section id="team">
+
+<h2>First Team Squad</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<img src="images/saka.jpg">
+
+<h3>Bukayo Saka</h3>
+
+<p>
+Position: Forward
+</p>
+
+<p>
+Number: 7
+</p>
+
+<p>
+Nationality: England
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+
+<img src="images/odegaard.jpg">
+
+
+<h3>Martin Odegaard</h3>
+
+<p>
+Position: Midfielder
+</p>
+
+<p>
+Number: 8
+</p>
+
+<p>
+Nationality: Norway
+</p>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+<!-- MATCH ENTITY -->
+
+
+<section id="matches">
+
+
+<h2>Upcoming Matches</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+
+<h3>
+Arsenal vs Chelsea
+</h3>
+
+
+<p>
+Date: 20 August 2026
+</p>
+
+
+<p>
+Competition:
+Premier League
+</p>
+
+
+<p>
+Venue:
+Emirates Stadium
+</p>
+
+
+<button onclick="buyTicket()">
+Buy Ticket
+</button>
+
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Arsenal vs Liverpool
+</h3>
+
+<p>
+Date: 28 August 2026
+</p>
+
+
+<p>
+Competition:
+Premier League
+</p>
+
+
+<button onclick="buyTicket()">
+Buy Ticket
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- STADIUM ENTITY -->
+
+
+<section>
+
+<h2>
+Emirates Stadium
+</h2>
+
+
+<div class="card">
+
+
+<p>
+Location:
+London, England
+</p>
+
+
+<p>
+Capacity:
+60,704
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- FAN + TICKET ENTITY -->
+
+
+<section id="tickets">
+
+
+<h2>
+Fan Registration
+</h2>
+
+
+<div class="card">
+
+
+<input id="fanName"
+placeholder="Your Name">
+
+
+<input id="fanEmail"
+placeholder="Email">
+
+
+<button onclick="registerFan()">
+
+Register
+
+</button>
+
+
+<p id="message"></p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- MERCHANDISE ENTITY -->
+
+
+<section id="shop">
+
+
+<h2>
+Arsenal Shop
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+
+<h3>
+Home Jersey
+</h3>
+
+
+<p>
+Price: £80
+</p>
+
+
+<p>
+Stock: 120
+</p>
+
+
+<button onclick="addCart()">
+
+Add To Cart
+
+</button>
+
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Arsenal Scarf
+</h3>
+
+<p>
+Price: £25
+</p>
+
+
+<button onclick="addCart()">
+
+Add To Cart
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- NEWS ENTITY -->
+
+
+<section id="news">
+
+
+<h2>
+Latest News
+</h2>
+
+
+<div class="card">
+
+
+<h3>
+Arsenal announces new signing
+</h3>
+
+
+<p>
+Published:
+16 July 2026
+</p>
+
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Match preparation begins
+</h3>
+
+
+<p>
+Published:
+18 July 2026
+</p>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+<footer>
+
+<p>
+© Arsenal Football Club Website
+</p>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
