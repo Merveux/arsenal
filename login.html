@@ -1,117 +1,65 @@
 <!DOCTYPE html>
-
 <html>
-
 
 <head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Arsenal Login</title>
 
-<link rel="stylesheet" href="css/style.css">
-
+<link rel="stylesheet" href="style.css">
 
 </head>
 
-
-
-
 <body>
-
-
 
 <header>
 
-
 <h1>Fan Login</h1>
 
+<nav>
+<a href="index.html">Home</a>
+<a href="register.html">Register</a>
+</nav>
 
 </header>
 
-
-
-
-
 <section>
 
-
-<form>
-
-
+<form onsubmit="return false;">
 
 <label>Username</label>
-
 <br>
-
-
 <input id="username" type="text">
-
-
 <br><br>
-
-
 
 <label>Password</label>
-
 <br>
-
-
 <input id="password" type="password">
-
-
 <br><br>
 
-
-<button onclick="login()" type="button">
-
-Login
-
-</button>
-
+<button onclick="login()" type="button">Login</button>
 
 </form>
 
-
-
 <p>
-
-Default Admin Account:
-
-<br>
-
-Username: admin
-
-<br>
-
+Default Admin Account:<br>
+Username: admin<br>
 Password: 1234
-
 </p>
 
-
+<p style="margin-top:10px; font-size:14px;">
+Registered as a fan? Log in using your <strong>email</strong> as the username.
+</p>
 
 </section>
 
-
-
-
-
 <footer>
-
-<p>
-
-Arsenal Fan Portal
-
-</p>
-
+<p>Arsenal Fan Portal</p>
 </footer>
 
-
-
-
-<script src="js/script.js"></script>
-
+<script src="script.js"></script>
 
 </body>
-
-
 </html>
