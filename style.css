@@ -1,525 +1,285 @@
 /* General Setup */
-
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-body{
-
-font-family:'Arial', sans-serif;
-
-background:#f8f8f8;
-
-color:#222;
-
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f8f8f8;
+  color: #222;
 }
-
 
 /* Header */
-
-header{
-
-background:#db001b;
-
-color:white;
-
-padding:20px;
-
-text-align:center;
-
-border-bottom:5px solid white;
-
+header {
+  background: #db001b;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 5px solid white;
 }
 
-
-
-header h1{
-
-font-size:35px;
-
-letter-spacing:2px;
-
+.crest {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 10px;
+  background: white;
+  color: #db001b;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 26px;
+  letter-spacing: 0;
+  border: 3px solid #ffd700;
 }
 
-
+header h1 {
+  font-size: 35px;
+  letter-spacing: 2px;
+}
 
 /* Navigation */
-
-nav{
-
-margin-top:20px;
-
+nav {
+  margin-top: 20px;
 }
 
-
-
-nav a{
-
-color:white;
-
-text-decoration:none;
-
-margin:12px;
-
-font-size:17px;
-
-font-weight:bold;
-
-transition:0.3s;
-
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 12px;
+  font-size: 17px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-
-
-nav a:hover{
-
-color:#ffd700;
-
+nav a:hover {
+  color: #ffd700;
 }
-
-
 
 /* Hero Section */
-
-
-.hero{
-
-height:600px;
-
-
-background:
-
-linear-gradient(
-
-rgba(120,0,20,0.7),
-
-rgba(0,0,0,0.6)
-
-),
-
-url("https://upload.wikimedia.org/wikipedia/commons/a/a9/Emirates_Stadium.jpg");
-
-
-background-size:cover;
-
-background-position:center;
-
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-
-text-align:center;
-
-color:white;
-
-
+.hero {
+  height: 600px;
+  background:
+    linear-gradient(rgba(120,0,20,0.7), rgba(0,0,0,0.6)),
+    url("https://upload.wikimedia.org/wikipedia/commons/a/a9/Emirates_Stadium.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
 }
 
-
-
-.hero h2{
-
-font-size:50px;
-
-text-transform:uppercase;
-
+.hero h2 {
+  font-size: 50px;
+  text-transform: uppercase;
 }
 
-
-
-.hero p{
-
-font-size:22px;
-
-margin-top:20px;
-
-max-width:700px;
-
+.hero p {
+  font-size: 22px;
+  margin-top: 20px;
+  max-width: 700px;
 }
-
-
 
 /* Buttons */
-
-
-button{
-
-
-background:#db001b;
-
-border:2px solid white;
-
-color:white;
-
-padding:15px 35px;
-
-font-size:17px;
-
-border-radius:30px;
-
-cursor:pointer;
-
-margin-top:25px;
-
-transition:0.3s;
-
-
+button {
+  background: #db001b;
+  border: 2px solid white;
+  color: white;
+  padding: 15px 35px;
+  font-size: 17px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: 0.3s;
 }
 
-
-
-button:hover{
-
-
-background:white;
-
-color:#db001b;
-
-transform:scale(1.05);
-
-
+button:hover {
+  background: white;
+  color: #db001b;
+  transform: scale(1.05);
 }
-
-
 
 /* Sections */
-
-
-section{
-
-padding:50px 10%;
-
-text-align:center;
-
-
+section {
+  padding: 50px 10%;
+  text-align: center;
 }
 
-
-
-section h2{
-
-color:#db001b;
-
-font-size:35px;
-
-margin-bottom:30px;
-
+section h2 {
+  color: #db001b;
+  font-size: 35px;
+  margin-bottom: 30px;
 }
-
-
 
 /* Cards */
-
-
-.features{
-
-
-display:flex;
-
-justify-content:center;
-
-gap:30px;
-
-flex-wrap:wrap;
-
-
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
-
-
-.box{
-
-
-background:white;
-
-width:280px;
-
-
-padding:30px;
-
-
-border-radius:15px;
-
-
-box-shadow:
-
-0 5px 20px rgba(0,0,0,0.15);
-
-
-transition:0.3s;
-
-
+.box {
+  background: white;
+  width: 280px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  transition: 0.3s;
 }
 
-
-
-.box:hover{
-
-
-transform:translateY(-10px);
-
-
-box-shadow:
-
-0 10px 25px rgba(0,0,0,0.3);
-
-
+.box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-
-
-
-.box h3{
-
-color:#db001b;
-
-font-size:22px;
-
-margin-bottom:15px;
-
+.box h3 {
+  color: #db001b;
+  font-size: 22px;
+  margin-bottom: 15px;
 }
-
-
-
-
 
 /* Images */
-
-
-img{
-
-
-max-width:100%;
-
-border-radius:15px;
-
-
+img {
+  max-width: 100%;
+  border-radius: 15px;
 }
 
+/* Player avatar placeholder (no external photos needed) */
+.avatar {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #db001b, #8c0012);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  border: 4px solid #ffd700;
+}
 
+/* Gallery placeholder tiles (no external / copyrighted photos needed) */
+.gallery-tile {
+  width: 220px;
+  height: 150px;
+  margin: 0 auto 15px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #db001b, #111);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
 
 /* Tables */
-
-
-table{
-
-width:90%;
-
-margin:auto;
-
-border-collapse:collapse;
-
-background:white;
-
-border-radius:10px;
-
-overflow:hidden;
-
+table {
+  width: 90%;
+  margin: auto;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-
-
-th{
-
-background:#db001b;
-
-color:white;
-
-padding:15px;
-
+th {
+  background: #db001b;
+  color: white;
+  padding: 15px;
 }
 
-
-td{
-
-padding:15px;
-
-border-bottom:1px solid #ddd;
-
+td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
 }
-
-
-
-
 
 /* Forms */
-
-
-form{
-
-
-background:white;
-
-padding:40px;
-
-width:350px;
-
-margin:auto;
-
-border-radius:15px;
-
-
-box-shadow:
-
-0 5px 20px rgba(0,0,0,0.2);
-
-
+form {
+  background: white;
+  padding: 40px;
+  width: 350px;
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
-
-
-input{
-
-
-width:100%;
-
-padding:12px;
-
-margin:10px 0;
-
-border:1px solid #ccc;
-
-border-radius:5px;
-
-
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
-
-
-
-
 
 /* Admin */
-
-
-.admin-box{
-
-
-background:white;
-
-padding:30px;
-
-width:400px;
-
-margin:auto;
-
-border-radius:15px;
-
-
-box-shadow:
-
-0 5px 20px rgba(0,0,0,0.2);
-
-
+.admin-box {
+  background: white;
+  padding: 30px;
+  width: 400px;
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
+/* Status messages */
+#message {
+  margin-top: 15px;
+  font-weight: bold;
+}
 
+#message.success {
+  color: #1a7f37;
+}
+
+#message.error {
+  color: #db001b;
+}
 
 /* Footer */
-
-
-footer{
-
-
-background:#111;
-
-color:white;
-
-text-align:center;
-
-padding:25px;
-
-
-margin-top:40px;
-
-
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
 }
 
-
-
-footer p{
-
-
-font-size:16px;
-
-
+footer p {
+  font-size: 16px;
 }
-
-
-
 
 /* Mobile Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 25px;
+  }
 
+  nav a {
+    display: block;
+    margin: 15px;
+  }
 
-@media(max-width:768px){
+  .hero h2 {
+    font-size: 32px;
+  }
 
+  .hero p {
+    font-size: 17px;
+  }
 
-header h1{
+  .box {
+    width: 90%;
+  }
 
-font-size:25px;
-
-}
-
-
-
-nav a{
-
-
-display:block;
-
-margin:15px;
-
-
-}
-
-
-
-.hero h2{
-
-
-font-size:32px;
-
-
-}
-
-
-
-.hero p{
-
-
-font-size:17px;
-
-
-}
-
-
-
-.box{
-
-
-width:90%;
-
-
-}
-
-
-
-form{
-
-
-width:90%;
-
-
-}
-
-
-
+  form {
+    width: 90%;
+  }
 }
