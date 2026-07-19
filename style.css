@@ -1,5 +1,9 @@
+/* General Setup */
+
 *{
 
+margin:0;
+padding:0;
 box-sizing:border-box;
 
 }
@@ -7,19 +11,20 @@ box-sizing:border-box;
 
 body{
 
-font-family:Arial;
+font-family:'Arial', sans-serif;
 
-margin:0;
+background:#f8f8f8;
 
-background:#f2f2f2;
+color:#222;
 
 }
 
 
+/* Header */
 
 header{
 
-background:#db0011;
+background:#db001b;
 
 color:white;
 
@@ -27,13 +32,27 @@ padding:20px;
 
 text-align:center;
 
+border-bottom:5px solid white;
+
 }
 
 
 
-header img{
+header h1{
 
-width:80px;
+font-size:35px;
+
+letter-spacing:2px;
+
+}
+
+
+
+/* Navigation */
+
+nav{
+
+margin-top:20px;
 
 }
 
@@ -43,23 +62,53 @@ nav a{
 
 color:white;
 
-margin:15px;
-
 text-decoration:none;
 
+margin:12px;
+
+font-size:17px;
+
 font-weight:bold;
+
+transition:0.3s;
 
 }
 
 
 
+nav a:hover{
+
+color:#ffd700;
+
+}
+
+
+
+/* Hero Section */
+
+
 .hero{
 
-height:350px;
+height:600px;
 
-background:#8b0010;
 
-color:white;
+background:
+
+linear-gradient(
+
+rgba(120,0,20,0.7),
+
+rgba(0,0,0,0.6)
+
+),
+
+url("https://upload.wikimedia.org/wikipedia/commons/a/a9/Emirates_Stadium.jpg");
+
+
+background-size:cover;
+
+background-position:center;
+
 
 display:flex;
 
@@ -67,69 +116,262 @@ align-items:center;
 
 justify-content:center;
 
-flex-direction:column;
+
+text-align:center;
+
+color:white;
+
 
 }
 
 
 
-section{
+.hero h2{
 
-padding:30px;
+font-size:50px;
 
-}
-
-
-
-.cards{
-
-display:flex;
-
-gap:20px;
-
-flex-wrap:wrap;
+text-transform:uppercase;
 
 }
 
 
 
-.card{
+.hero p{
 
-background:white;
+font-size:22px;
 
-padding:20px;
+margin-top:20px;
 
-width:280px;
-
-border-radius:10px;
-
-box-shadow:0px 5px 10px gray;
+max-width:700px;
 
 }
 
 
 
-.card img{
-
-width:100%;
-
-}
-
+/* Buttons */
 
 
 button{
 
-background:#db0011;
+
+background:#db001b;
+
+border:2px solid white;
 
 color:white;
 
-padding:10px 20px;
+padding:15px 35px;
 
-border:none;
+font-size:17px;
+
+border-radius:30px;
 
 cursor:pointer;
 
-border-radius:5px;
+margin-top:25px;
+
+transition:0.3s;
+
+
+}
+
+
+
+button:hover{
+
+
+background:white;
+
+color:#db001b;
+
+transform:scale(1.05);
+
+
+}
+
+
+
+/* Sections */
+
+
+section{
+
+padding:50px 10%;
+
+text-align:center;
+
+
+}
+
+
+
+section h2{
+
+color:#db001b;
+
+font-size:35px;
+
+margin-bottom:30px;
+
+}
+
+
+
+/* Cards */
+
+
+.features{
+
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+flex-wrap:wrap;
+
+
+}
+
+
+
+.box{
+
+
+background:white;
+
+width:280px;
+
+
+padding:30px;
+
+
+border-radius:15px;
+
+
+box-shadow:
+
+0 5px 20px rgba(0,0,0,0.15);
+
+
+transition:0.3s;
+
+
+}
+
+
+
+.box:hover{
+
+
+transform:translateY(-10px);
+
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,0.3);
+
+
+}
+
+
+
+
+.box h3{
+
+color:#db001b;
+
+font-size:22px;
+
+margin-bottom:15px;
+
+}
+
+
+
+
+
+/* Images */
+
+
+img{
+
+
+max-width:100%;
+
+border-radius:15px;
+
+
+}
+
+
+
+/* Tables */
+
+
+table{
+
+width:90%;
+
+margin:auto;
+
+border-collapse:collapse;
+
+background:white;
+
+border-radius:10px;
+
+overflow:hidden;
+
+}
+
+
+
+th{
+
+background:#db001b;
+
+color:white;
+
+padding:15px;
+
+}
+
+
+td{
+
+padding:15px;
+
+border-bottom:1px solid #ddd;
+
+}
+
+
+
+
+
+/* Forms */
+
+
+form{
+
+
+background:white;
+
+padding:40px;
+
+width:350px;
+
+margin:auto;
+
+border-radius:15px;
+
+
+box-shadow:
+
+0 5px 20px rgba(0,0,0,0.2);
+
 
 }
 
@@ -137,26 +379,147 @@ border-radius:5px;
 
 input{
 
-display:block;
 
-padding:10px;
+width:100%;
 
-margin:10px;
+padding:12px;
 
-width:250px;
+margin:10px 0;
+
+border:1px solid #ccc;
+
+border-radius:5px;
+
 
 }
 
 
 
+
+
+/* Admin */
+
+
+.admin-box{
+
+
+background:white;
+
+padding:30px;
+
+width:400px;
+
+margin:auto;
+
+border-radius:15px;
+
+
+box-shadow:
+
+0 5px 20px rgba(0,0,0,0.2);
+
+
+}
+
+
+
+/* Footer */
+
+
 footer{
+
 
 background:#111;
 
 color:white;
 
-padding:20px;
-
 text-align:center;
+
+padding:25px;
+
+
+margin-top:40px;
+
+
+}
+
+
+
+footer p{
+
+
+font-size:16px;
+
+
+}
+
+
+
+
+/* Mobile Design */
+
+
+@media(max-width:768px){
+
+
+header h1{
+
+font-size:25px;
+
+}
+
+
+
+nav a{
+
+
+display:block;
+
+margin:15px;
+
+
+}
+
+
+
+.hero h2{
+
+
+font-size:32px;
+
+
+}
+
+
+
+.hero p{
+
+
+font-size:17px;
+
+
+}
+
+
+
+.box{
+
+
+width:90%;
+
+
+}
+
+
+
+form{
+
+
+width:90%;
+
+
+}
+
+
 
 }
